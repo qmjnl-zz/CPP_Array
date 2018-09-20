@@ -2,6 +2,8 @@
 
 #include <string>
 #include <stdexcept>
+#include <random>
+#include <utility>
 
 template <typename TData> class CArray {
 public: // Interface
@@ -109,6 +111,33 @@ public: // Interface
 
 	// Получить элемент массива по заданному индексу (const)
 	const TData &operator[](unsigned int _index) const { return data_[_index]; };
+
+	// Отсортировать массив
+	void sort() {
+		sort(0, size_ - 1);
+	};
+
+protected:
+	// Отсортировать массив
+	void sort(const int _first, const int _last) {
+		if (size_ < 2 || _first >= _last) { return; }
+
+		TData& pivot = data_[_last];
+		int i = _first - 1;
+
+		for (int j = _first; j <= _last - 1; j++) {
+			if (data_[j] <= pivot) {
+				i++;
+				std::swap(data_[i], data_[j]);
+			}
+		}
+
+		int pi = i + 1;
+		std::swap(data_[pi], data_[_last]);
+
+		sort(_first, pi - 1);
+		sort(pi + 1, _last);
+	};
 
 protected: // Attributes
 	const unsigned int default_capacity_ = 1;
