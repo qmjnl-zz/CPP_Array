@@ -14,8 +14,8 @@ public:
   };
 
   CArray(
-	  const CArray & _array
-	)
+      const CArray & _array
+    )
   {
     capacity_(_array.capacity_);
     size_(_array.size_);
@@ -38,8 +38,8 @@ public:
 
   // Add element to the end
   void push_back(
-	  const TData & _value
-	)
+      const TData & _value
+    )
   {
     if (size_ == capacity_)
     {
@@ -61,9 +61,9 @@ public:
 
   // Add element at _index position
   void insert(
-	  unsigned int _index,
-	  const TData & _value
-	)
+      unsigned int _index,
+      const TData & _value
+    )
   {
     if (size_ > 0 && _index >= size_)
     {
@@ -103,8 +103,8 @@ public:
 
   // Delete element at _index
   void erase(
-	  unsigned int _index
-	)
+      unsigned int _index
+    )
   {
     if (_index >= size_)
     {
@@ -139,16 +139,16 @@ public:
 
   // Get element at _index
   TData & operator[](
-	  unsigned int _index
-	)
+      unsigned int _index
+    )
   {
     return data_[_index];
   };
 
   // Get element at _index (const version)
   const TData & operator[](
-	  unsigned int _index
-	) const
+      unsigned int _index
+    ) const
   {
     return data_[_index];
   };
@@ -162,9 +162,9 @@ public:
 protected:
   // Sort container
   void sort(
-	  const int _first,
-	  const int _last
-	)
+      const int _first,
+      const int _last
+    )
   {
     if (size_ < 2 || _first >= _last)
     {
