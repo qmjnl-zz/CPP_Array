@@ -1,0 +1,7 @@
+BasedOnStyle: LLVM
+AllowShortFunctionsOnASingleLine: None
+AlwaysBreakTemplateDeclarations: true
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWidth: 2
+BreakBeforeBraces: Allman
+PointerAlignment: Middle
