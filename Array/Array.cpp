@@ -2,6 +2,22 @@
 #include <iostream>
 #include <random>
 
+std::string get_string(
+    unsigned int length
+  )
+{
+  static const char alphanum[] = "0123456789"
+                                 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                 "abcdefghijklmnopqrstuvwxyz";
+  char * s = new char[length];
+  for (unsigned int i = 0; i < length - 1; ++i)
+  {
+    s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+  }
+  s[length - 1] = 0;
+  return s;
+}
+
 template <typename TData>
 void print_array(
     const CArray<TData> & _array
@@ -23,18 +39,19 @@ int main()
   std::mt19937 engine(device());
   std::uniform_int_distribution<unsigned int> distribution(0, 9);
 
-  for (int i = 1; i <= 10; i++)
+  for (int i = 1; i <= 2; i++)
   {
     CArray<int> data;
     unsigned int count = distribution(engine);
     for (unsigned int i = 0; i < count; i++)
     {
-      data.push_back(distribution(engine));
+      get_string(count);
+      // data.push_back(distribution(engine));
     }
 
-    print_array(data);
-    data.sort();
-    print_array(data);
-    std::cout << "*****" << std::endl;
+    // print_array(data);
+    // data.sort();
+    // print_array(data);
+    // std::cout << "*****" << std::endl;
   }
 }
